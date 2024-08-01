@@ -1,0 +1,56 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <div id="message" class="alert alert-secondary"></div>
+    
+    <div id="profile-view">
+    </div>
+
+    <div id="posts-title">
+        {% if user.is_authenticated %} 
+            <div class="container">
+                <h4 id="greeting">Good afternoon {{ request.user.username }}.</h4>
+                <form id="post-form">
+                    <textarea class="form-control" id="compose-content" placeholder="What's on your mind?"></textarea>
+                    <input type="submit" id="submit-post" class="btn btn-outline-dark form-control"/>
+                </form>
+            </div>
+        <hr>
+        {% endif %}
+    
+        <h2>All Posts</h2>
+    </div>
+
+    <div id="following-title">
+    </div>
+    <div id="posts-view">
+    </div>
+
+    <footer class="footer fixed-bottom">
+        <nav class="navbar nav-tabs navbar-light navbar-expand justify-content-center" id="footer">
+            <ul class="navbar-nav">
+                <li class="page-item">
+                    <a class="page-link arrow" href="#" aria-label="Prev" id="prev-arrow">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" id="prev-page" href="#">1</a></li>
+                <li class="page-item"><a class="page-link current" id="current-page"href="#">2</a></li>
+                <li class="page-item"><a class="page-link" id="next-page"href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link arrow" href="#" aria-label="Next" id="next-arrow">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </footer>
+
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'network/network.js' %}"></script>
+{% endblock %}
+
+
