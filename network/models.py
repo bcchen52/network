@@ -66,5 +66,4 @@ class Post(models.Model):
             "user_liked": False,
             "owned": False,
             "to_follow": "None",
-            "page_info": None,
         }

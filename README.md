@@ -52,11 +52,10 @@ For example, when a the seralize() method for a Post object returns...
     "user_liked": False,
     "owned": False,
     "to_follow": "None",
-    "page_info": None,
 }
 ```
 
-The first few keys are populated with information from the Post object itself, however, `user_liked`, `owned`, `to_follow`, and `page_info`, which determines if the current user has liked the post, owns the post, follows the person, and what "page" each set of posts is on, respectively, is not stored in the Post object itself. 
+The first few keys are populated with information from the Post object itself, however, `user_liked`, `owned`, `to_follow`, which determine if the current user has liked the post, owns the post, and follows the person, respectively, is not stored in the Post object itself. 
 
 `user_liked` checks if the current user is in the liked field of the Post object to determine the status of the post. 
 
@@ -64,13 +63,15 @@ The first few keys are populated with information from the Post object itself, h
 
 `to_follow` checks if the current user is in the following field of the Post object's creater and either displays a follow or unfollow button.
 
-These features only work if the user are logged in.
+These features also take into account whether or not the user is logged in.
 
-`page_info` allows for 
+If a user isn't logged in...
 
+If a user is logged in and it is their post...
 
+If a user is logged in, it isn't their post and they aren't following the creator...
 
-This application leverages the relationship between 
+If a user is logged in, it isn't their post and they are following the creator...
 
 ## Requirements
 
