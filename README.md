@@ -24,23 +24,25 @@ This includes...
 - The ability for users to edit their own posts
 - The ability for users to like and unlike posts
 - The ability for users to follow other users
-- Pagination to statically load and a responsive page buttons
+- Pagination to statically load and create responsive page buttons
 
 
 Additional features include...
-- Follow button available and responsive on posts page
-- Posts with a load-in animation
+- Follow button available and responsive on **Posts** page
+- Posts with a load-in animation using CSS animation
+
+___
 
 The Django models used are...
-- User
-- Profile
+- `User`
+- `Profile`
     - Contains information about a user's following/followers
-- Post
+- `Post`
     - Contains information about a post and its likes
 
 When the information in those models is accessed via JavaScript and API calls, additional information is returned to determine what elements should be displayed.
 
-For example, when a the seralize() method for a Post object returns...
+For example, when the `seralize()` method for a `Post` object returns...
 ```
  return {
     "id": self.id,
@@ -55,23 +57,48 @@ For example, when a the seralize() method for a Post object returns...
 }
 ```
 
-The first few keys are populated with information from the Post object itself, however, `user_liked`, `owned`, `to_follow`, which determine if the current user has liked the post, owns the post, and follows the person, respectively, is not stored in the Post object itself. 
+The first few keys are populated with information from the `Post` object itself, however, `user_liked`, `owned`, `to_follow`, which determine if the current user has liked the post, owns the post, and follows the person, respectively, is not stored in the Post object itself. 
 
-`user_liked` checks if the current user is in the liked field of the Post object to determine the status of the post. 
+`user_liked` checks if the current user is in the liked field of the `Post` object to determine the status of the post. 
 
-`owned` checks if the current user is the owner of the Post object, which will display an Edit button if the user created that post.
+`owned` checks if the current user is the owner of the `Post` object, which will display an Edit button if the user created that post.
 
-`to_follow` checks if the current user is in the following field of the Post object's creater and either displays a follow or unfollow button.
+`to_follow` checks if the current user is in the following field of the `Post` object's creater and either displays a follow or unfollow button.
 
 These features also take into account whether or not the user is logged in.
 
 If a user isn't logged in...
 
+![post if user logged out](media/logged_out_example.png)
+
 If a user is logged in and it is their post...
+
+![post if user created](media/edit_button_example.png)
 
 If a user is logged in, it isn't their post and they aren't following the creator...
 
+![post if user not following](media/user_not_following_example.png)
+
 If a user is logged in, it isn't their post and they are following the creator...
+
+![post if user following](media/user_following_example.png)
+
+In addition, the `posts(request, posts_type, page)` method in `network/views.py` uses Django's Pagination feature, which allows for posts to be split up and displayed in groups of ten. This method returns an array of JSON objects with 10 post objects and 1 object with information about the current page, which is used to alter the page buttons and labels on the bottom of the page. 
+
+For example, the JSON object for the third page with four total pages would look like...
+```
+{ 
+    bwd: true,
+    fwd: false,
+    next: 4,
+    prev: 2,
+}
+```
+
+This results in...
+
+![pagination example](media/pagination_example.png)
+
 
 ## Requirements
 
