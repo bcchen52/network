@@ -9,11 +9,12 @@ The back-end utilizes Django to create and serve API calls that are used to stor
 Network is project 4 from Harvard University's CS50W, and basic login/register/logout functions were included in the starter code. 
 
 #### Table of contents
-- [Functionality and Features](#functionality-and-features)
+- [Features](#features)
 - [Requirements](#requirements)
 - [How To Use](#how-to-use)
+- [Functionality](#functionality)
 
-## Functionality and Features
+## Features
 
 This project meets all requirements specified by CS50W, listed [here.](https://cs50.harvard.edu/web/2020/projects/4/network/)
 
@@ -31,7 +32,30 @@ Additional features include...
 - Follow button available and responsive on **Posts** page
 - Posts with a load-in animation using CSS animation
 
-___
+## Requirements
+
+This project requires Django to be installed.
+
+Run
+
+    $ pip install -r requirements.txt
+
+## How To Use
+
+This repository contains an empty Network application. 
+
+Clone and enter the repository.
+
+When running for the first time, create migrations with the following.
+
+    $ python manage.py makemigrations network
+    $ python manage.py migrate
+
+After migrations have been created, run the app with 
+
+    $ python manage.py runserver
+
+## Functionality
 
 The Django models used are...
 - `User`
@@ -100,25 +124,3 @@ This results in...
 ![pagination example](media/pagination_example.png)
 
 
-## Requirements
-
-This project requires Django to be installed.
-
-Run
-
-    $ pip install -r requirements.txt
-
-## How To Use
-
-This repository contains an empty Network application. 
-
-Clone and enter the repository.
-
-When running for the first time, create migrations with the following.
-
-    $ python manage.py makemigrations network
-    $ python manage.py migrate
-
-After migrations have been created, run the app with 
-
-    $ python manage.py runserver
